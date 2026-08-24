@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1280px; height: 800px; background: #0d1117; font-family: 'SF Mono', 'Menlo', 'Consolas', monospace; color: #e6edf3; overflow: hidden; }
+  .card { padding: 60px 64px; display: flex; flex-direction: column; height: 100%; }
+  .kicker { font-size: 22px; color: #58a6ff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-family: -apple-system, 'Segoe UI', sans-serif; }
+  h1 { font-size: 44px; margin: 14px 0 30px; font-weight: 800; font-family: -apple-system, 'Segoe UI', sans-serif; }
+  .term { background: #010409; border: 1px solid #30363d; border-radius: 14px; overflow: hidden; }
+  .term-bar { background: #161b22; padding: 14px 20px; display: flex; gap: 8px; align-items: center; border-bottom: 1px solid #30363d; }
+  .dot { width: 13px; height: 13px; border-radius: 50%; }
+  .term-body { padding: 30px 34px; font-size: 23px; line-height: 1.75; }
+  .c { color: #8b949e; } .g { color: #3fb950; } .b { color: #58a6ff; } .y { color: #d29922; }
+  .footer { margin-top: auto; font-size: 21px; color: #8b949e; font-family: -apple-system, 'Segoe UI', sans-serif; }
+  .footer b { color: #e6edf3; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="kicker">Setup in 6 commands</div>
+    <h1>From manifest to live bot</h1>
+    <div class="term">
+      <div class="term-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#febc2e"></div><div class="dot" style="background:#28c840"></div></div>
+      <div class="term-body">
+        <div><span class="c">$</span> <span class="b">slack app create</span> <span class="y">--manifest manifests/client-agent.json</span></div>
+        <div><span class="c">$</span> <span class="b">python3 scripts/oauth_callback.py</span> <span class="c">&amp;</span></div>
+        <div><span class="c">$</span> <span class="b">python3 scripts/install_url.py</span> <span class="y">--state client-a</span></div>
+        <div><span class="c">$</span> <span class="b">python3 scripts/exchange_code.py</span> <span class="y">"&lt;code&gt;" client-a</span></div>
+        <div><span class="g">→ EXCHANGE OK: client-a bot_token=xoxb-... bot_user_id=U0...</span></div>
+        <div><span class="g">→ Bot is live. Mention it in any channel.</span></div>
+      </div>
+    </div>
+    <div class="footer">Human step: <b>one</b> Approve click. Everything else automated. <b>github.com/Amz34/hermes-slack-agents</b></div>
+  </div>
+</body>
+</html>

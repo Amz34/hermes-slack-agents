@@ -1,0 +1,17 @@
+{
+  "clients": [
+    {
+      "id": "example-client",
+      "status": "live",
+      "profile": "profiles/example-client/",
+      "created": "2026-08-24",
+      "on_call": "you@example.com",
+      "budget": {
+        "memory_mb": 100,
+        "cron_min_interval": 15,
+        "log_retention_days": 7,
+        "token_spend_warn_pct": 80
+      }
+    }
+  ]
+}

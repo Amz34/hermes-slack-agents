@@ -1,0 +1,26 @@
+# hermes-client@.service — process isolation template unit.
+#
+# One template, N instances: systemctl start hermes-client@<client-id>
+# A crashing client bot cannot take down the gateway or other clients.
+# The %i placeholder is the client id from the registry (data plane).
+
+[Unit]
+Description=Hermes agent gateway for client %i
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/opt/hermes/%i
+EnvironmentFile=-/opt/hermes/%i/.env
+ExecStart=/usr/local/bin/hermes -p %i gateway
+Restart=always
+RestartSec=10
+# Hard budget: one noisy client cannot starve the fleet
+MemoryMax=128M
+CPUQuota=50%
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

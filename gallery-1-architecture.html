@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1280px; height: 800px; background: #0d1117; font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; color: #e6edf3; overflow: hidden; }
+  .card { padding: 56px 64px; display: flex; flex-direction: column; height: 100%; }
+  .kicker { font-size: 22px; color: #58a6ff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+  h1 { font-size: 52px; margin: 14px 0 8px; font-weight: 800; }
+  .sub { font-size: 24px; color: #8b949e; margin-bottom: 40px; }
+  .grid { display: flex; gap: 28px; align-items: stretch; }
+  .box { background: #161b22; border: 1px solid #30363d; border-radius: 14px; padding: 24px 26px; width: 340px; }
+  .box .title { font-size: 22px; font-weight: 700; margin-bottom: 10px; color: #58a6ff; }
+  .box .item { font-size: 19px; color: #c9d1d9; padding: 6px 0; border-bottom: 1px solid #21262d; }
+  .box .item:last-child { border-bottom: none; }
+  .box .item span { color: #8b949e; }
+  .arrow { font-size: 44px; color: #58a6ff; align-self: center; font-weight: 700; }
+  .footer { margin-top: auto; display: flex; gap: 20px; }
+  .chip { background: #161b22; border: 1px solid #30363d; border-radius: 999px; padding: 10px 22px; font-size: 19px; color: #8b949e; }
+  .chip b { color: #e6edf3; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="kicker">Hermes Slack Agents</div>
+    <h1>One gateway. Per-client bots.</h1>
+    <div class="sub">Private AI agents in Slack — isolated, self-hosted, $0/month</div>
+    <div class="grid">
+      <div class="box">
+        <div class="title">Hermes Gateway</div>
+        <div class="item">Free cloud VM</div>
+        <div class="item">Socket Mode</div>
+        <div class="item">Shared brain</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="box">
+        <div class="title">Client A</div>
+        <div class="item"><span>own</span> token</div>
+        <div class="item"><span>own</span> memory</div>
+        <div class="item"><span>own</span> cron</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="box">
+        <div class="title">Client B · C · N</div>
+        <div class="item"><span>own</span> workspace</div>
+        <div class="item"><span>own</span> permissions</div>
+        <div class="item"><span>no</span> data leaks</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="chip">🔒 Private by design</div>
+      <div class="chip">⚡ 1-click install</div>
+      <div class="chip"><b>github.com/Amz34/hermes-slack-agents</b></div>
+    </div>
+  </div>
+</body>
+</html>

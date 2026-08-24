@@ -58,6 +58,29 @@ python3 scripts/exchange_code.py "<code>" client-a
 #    and start the profile gateway. Bot is live.
 ```
 
+## Scaling
+
+Self-hosted fleets die from operational complexity, not infrastructure cost.
+This repo ships the answer to that from day one:
+
+- **Control plane vs data plane.** One shared gateway/codebase (upgrade once),
+  per-client isolated profiles (customize freely) — shared code is immutable,
+  per-client state is disposable.
+- **One-command onboarding.** `scripts/client_onboard.sh <client-id>` registers
+  the client, prints the install URL, wires the systemd unit. Idempotent —
+  re-running never duplicates.
+- **Registry as source of truth.** `config/clients.json` — every client is one
+  JSON entry (id, status, profile, on-call, budget).
+- **Process isolation.** `systemd/hermes-client@.service` — one template unit,
+  N instances. A crashing client bot can't take down the fleet.
+- **Budgets from day one.** Memory, cron interval, log retention per client —
+  scale stays predictable.
+- **Fleet health in one command.** `scripts/healthcheck.sh --all` → wire into
+  cron/alerting; two consecutive failures pages someone.
+
+→ Full playbook: [`docs/SCALING.md`](docs/SCALING.md) (design rules) and
+[`docs/OPERATIONS.md`](docs/OPERATIONS.md) (onboard/health/upgrade/backup).
+
 ## Files
 
 | Path | Purpose |
@@ -66,6 +89,12 @@ python3 scripts/exchange_code.py "<code>" client-a
 | `scripts/oauth_callback.py` | OAuth code capture server (localhost:8845) |
 | `scripts/exchange_code.py` | Code → bot token exchange + state save |
 | `scripts/install_url.py` | Builds the per-client install URL |
+| `scripts/client_onboard.sh` | One-command idempotent client provisioning |
+| `scripts/healthcheck.sh` | Fleet health: `--all` or single client |
+| `config/clients.example.json` | Client registry schema (source of truth) |
+| `systemd/hermes-client@.service` | Process isolation template unit |
+| `docs/SCALING.md` | Scaling architecture — the long-term play |
+| `docs/OPERATIONS.md` | Day-to-day runbook: onboard, health, upgrade, backup |
 | `.env.example` | Required env vars |
 
 ## Security
