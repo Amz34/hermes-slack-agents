@@ -107,3 +107,7 @@ This repo ships the answer to that from day one:
 ## License
 
 MIT — use it, fork it, ship it.
+
+---
+
+Part of [my always-on agent stack](https://github.com/Amz34) · [Awesome Agent Infrastructure](https://github.com/Amz34/awesome-agent-infrastructure) (135 live-checked building blocks).
